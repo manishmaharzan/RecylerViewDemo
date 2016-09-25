@@ -27,7 +27,11 @@ public class ListActivity extends Activity
         recyclerView.setLayoutManager(linearLayoutManager);
 
         //Setting up a hardCoded Data
-        String [] listItem = {"one","two","three","four","5","6","7","8","9","10","11","12","13","14"};
+        String [] listItem =new String[14];
+        for(int i=0;i<14;i++)
+        {
+            listItem[i]=Integer.toString(i);
+        }
 
         adapter = new MyAdapter(listItem);
         recyclerView.setAdapter(adapter);
