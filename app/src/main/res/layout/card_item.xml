@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:layout_margin="5dp"
+    android:elevation="5dp"
+    android:foreground="?android:attr/selectableItemBackground"
     card_view:cardCornerRadius="4dp">
 
     <RelativeLayout
@@ -26,6 +28,15 @@
             android:layout_height="wrap_content"
             android:text="This is a Tittle of RecyclerDemo"
             android:layout_toRightOf="@id/img_crd"/>
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This is SubTitle"
+            android:layout_below="@id/title"
+            android:layout_alignStart="@id/title"
+            android:layout_alignLeft="@id/title" />
     </RelativeLayout>
 
 

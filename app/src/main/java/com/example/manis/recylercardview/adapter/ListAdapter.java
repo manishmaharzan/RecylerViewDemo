@@ -12,11 +12,11 @@ import android.widget.Toast;
 
 import com.example.manis.recylercardview.R;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
     String [] listItem ;
 
-    public MyAdapter(String listItem[])
+    public ListAdapter(String listItem[])
     {
         this.listItem=listItem;
     }
@@ -30,6 +30,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         holder.textView.setText(listItem[position]);
+
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
