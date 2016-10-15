@@ -1,5 +1,10 @@
 package com.example.manis.recylercardview.adapter;
 
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,10 +16,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.manis.recylercardview.R;
+import com.example.manis.recylercardview.ui.EditFragment;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
     String [] listItem ;
+    private Context context;
+
 
     public ListAdapter(String listItem[])
     {
@@ -23,6 +31,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item,parent,false);
+        context=parent.getContext();
         return new ViewHolder(view);
     }
 
@@ -30,17 +39,18 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         holder.textView.setText(listItem[position]);
-
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),"hello you just click me",Toast.LENGTH_LONG).show();
-                Log.v("mylog", "Clicked");
+                EditFragment editFragment = new EditFragment();
+                FragmentManager manager = ((Activity) context).getFragmentManager();
+                FragmentTransaction fragmentTransaction= manager.beginTransaction();
+                fragmentTransaction.replace(R.id.container,editFragment,"edit").
+                        addToBackStack(null)
+                        .commit();
             }
         });
-
     }
-
 
     @Override
     public int getItemCount() {
